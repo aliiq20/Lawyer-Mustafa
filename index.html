@@ -14,7 +14,6 @@
   --overlay: rgba(0, 0, 0, 0.65); /* طبقة تعتيم للخلفية */
 }
 
-/* أنيميشن تدرج متموج */
 @keyframes rgbWave {
   0% { filter: hue-rotate(0deg); }
   100% { filter: hue-rotate(360deg); }
@@ -32,7 +31,6 @@ html, body {
   overflow-x:hidden;
 }
 
-/* إعدادات الخلفية الجديدة */
 body {
   background-image: linear-gradient(var(--overlay), var(--overlay)), var(--bg-image);
   background-size: cover;
@@ -103,10 +101,20 @@ h1 {
   transition:all .2s;
   box-shadow:0 0 12px var(--accent),0 0 3px rgba(255,255,255,0.5) inset;
 }
+/* ستايل خاص لزر الاتصال حتى يميزه */
+.btn-call {
+  background: #25d366; /* لون أخضر للاتصال */
+  color: #fff;
+  box-shadow: 0 0 12px #25d366;
+}
 .btn:hover {
   background:var(--accent-hover);
   box-shadow:0 0 18px var(--accent-hover);
   transform:translateY(-1px);
+}
+.btn-call:hover {
+  background: #1eb954;
+  box-shadow: 0 0 18px #1eb954;
 }
 .btn:active {
   transform:translateY(0);
@@ -122,7 +130,6 @@ h1 {
 .spacer {
   height:23px;
 }
-/* زر الإعدادات */
 #settingsBtn {
 position:absolute;
 top:15px;
@@ -134,12 +141,7 @@ padding:6px 10px;
 border-radius:8px;
 cursor:pointer;
 z-index:10;
-transition:background 0.2s;
 }
-#settingsBtn.active {
-background:#444;
-}
-/* قائمة الإعدادات */
 #settingsMenu {
 position:absolute;
 top:50px;
@@ -160,15 +162,6 @@ display:block;
 opacity:1;
 transform:translateY(0);
 }
-#settingsMenu label {
-display:block;
-margin-bottom:8px;
-color:#fff;
-font-size:14px;
-}
-#settingsMenu input {
-width:100%;
-}
 .color-option {
 display:inline-block;
 width:22px;
@@ -178,22 +171,8 @@ margin:2px;
 cursor:pointer;
 border:1px solid #fff;
 }
-.range-container {
-  display:flex;
-  align-items:center;
-  gap:6px;
-}
-#scaleValue {
-  min-width: 40px;
-  text-align:center;
-  font-size:13px;
-  color:#fff;
-  background:#333;
-  border-radius:4px;
-  padding:2px 4px;
-}
 
-/* --- GALLERY / ADMIN STYLES --- */
+/* --- GALLERY --- */
 .gallery {
   width:100%;
   max-width:980px;
@@ -213,7 +192,6 @@ border:1px solid #fff;
   border-radius:10px;
   backdrop-filter: blur(5px);
 }
-.cat-title { font-weight:800; }
 .media-grid {
   display:grid;
   grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
@@ -226,10 +204,6 @@ border:1px solid #fff;
   border: 1px solid rgba(255,255,255,0.1);
   border-radius:8px;
   overflow:hidden;
-  display:flex;
-  flex-direction:column;
-  gap:6px;
-  align-items:stretch;
   padding:6px;
 }
 .media-thumb {
@@ -237,19 +211,8 @@ border:1px solid #fff;
   height:110px;
   object-fit:cover;
   border-radius:6px;
-  background:#111;
 }
-.media-info {
-  padding:4px;
-  font-size:13px;
-  display:flex;
-  justify-content:space-between;
-  gap:8px;
-  align-items:center;
-}
-.small { font-size:12px; opacity:0.85; }
 
-/* Admin button top-right */
 #adminBtn {
   position:absolute;
   top:15px;
@@ -263,7 +226,6 @@ border:1px solid #fff;
   z-index:10;
 }
 
-/* Admin modal */
 .admin-modal {
   position:fixed;
   inset:0;
@@ -280,20 +242,16 @@ border:1px solid #fff;
   background:#0f0f0f;
   border-radius:12px;
   padding:14px;
-  box-shadow:0 6px 30px rgba(0,0,0,0.6);
-  color:var(--text);
   direction:rtl;
   overflow-y: auto;
   max-height: 90vh;
 }
-.row { display:flex; gap:8px; align-items:center; margin-bottom:8px; flex-wrap:wrap; }
-.input, input[type="text"], select, textarea {
+.input {
   background:#111;
   color:#fff;
   border:1px solid #333;
   padding:8px;
   border-radius:8px;
-  font-size:14px;
 }
 .btn-admin {
   background:var(--accent);
@@ -304,9 +262,8 @@ border:1px solid #fff;
   font-weight:700;
   border: none;
 }
-.action-danger { background:#8b0000; color:#fff; border:none; padding:6px 8px; border-radius:6px; cursor:pointer; }
+.action-danger { background:#8b0000; color:#fff; border:none; padding:6px 8px; border-radius:6px; }
 
-/* Lightbox */
 .lightbox {
   position:fixed;
   inset:0;
@@ -315,29 +272,12 @@ border:1px solid #fff;
   justify-content:center;
   z-index:9998;
   background:rgba(0,0,0,0.9);
-  padding:20px;
 }
 .lightbox.show { display:flex; }
-.lightbox-media {
-  max-width:95%;
-  max-height:85%;
-  border-radius: 8px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.5);
-}
+.lightbox-media { max-width:95%; max-height:85%; border-radius: 8px; }
 .lightbox-close {
-  position:absolute;
-  top:18px;
-  left:18px;
-  background:var(--accent);
-  color:#000;
-  border:none;
-  padding:10px;
-  border-radius:50%;
-  width: 40px;
-  height: 40px;
-  cursor:pointer;
-  z-index:9999;
-  font-weight: bold;
+  position:absolute; top:18px; left:18px; background:var(--accent); color:#000;
+  border:none; padding:10px; border-radius:50%; width: 40px; height: 40px; cursor:pointer;
 }
 </style>
 </head>
@@ -351,18 +291,14 @@ border:1px solid #fff;
 <div id="settingsMenu">
   <label>اختر اللون:</label>
   <div>
-    <span class="color-option" data-color="#d4af37" style="background:#d4af37;" title="ذهبي"></span>
-    <span class="color-option" data-color="#ffa500" style="background:#ffa500;" title="برتقالي"></span>
-    <span class="color-option" data-color="#800080" style="background:#800080;" title="بنفسجي"></span>
-    <span class="color-option" data-color="#C2B280" style="background:#C2B280;" title="صحراوي"></span>
-    <span class="color-option" data-color="rgb" style="background:linear-gradient(90deg, red, orange, yellow, green, blue, purple);" title="RGB"></span>
-    <input type="color" id="colorPicker" value="#d4af37">
+    <span class="color-option" data-color="#d4af37" style="background:#d4af37;"></span>
+    <span class="color-option" data-color="#ffa500" style="background:#ffa500;"></span>
+    <span class="color-option" data-color="#800080" style="background:#800080;"></span>
+    <span class="color-option" data-color="rgb" style="background:linear-gradient(90deg, red, orange, yellow, green, blue, purple);"></span>
   </div>
   <label>حجم الصفحة:</label>
-  <div class="range-container">
-    <input type="range" id="scaleInput" min="50" max="150" value="100">
-    <div id="scaleValue">100%</div>
-  </div>
+  <input type="range" id="scaleInput" min="50" max="150" value="100">
+  <div id="scaleValue">100%</div>
 </div>
 
 <main class="wrap">
@@ -374,6 +310,8 @@ border:1px solid #fff;
   <a class="btn" href="https://www.youtube.com/@shmri25" target="_blank" rel="noopener">قناتي اليوتيوب ▶️</a>
   <a class="btn" href="https://www.facebook.com/share/1FHHbLJT6i/" target="_blank" rel="noopener">حسابي الفيس بوك 📘</a>
   <a class="btn" href="https://www.facebook.com/share/16p6V6pzLw/" target="_blank" rel="noopener">صفحتي على الفيس بوك 🌐</a>
+  
+  <a class="btn btn-call" href="tel:07779789000">رقم الهاتف: 07779789000 📞</a>
 
   <button class="btn" onclick="togglePlay()">علي اميري</button>
   <audio id="player" src="علي أميري ونعم الأمير _ أجمل أنشودة(MP3_160K).mp3"></audio>
@@ -384,39 +322,22 @@ border:1px solid #fff;
   <div class="spacer"></div>
 </main>
 
-<div class="admin-modal" id="adminModal" aria-hidden="true">
-  <div class="admin-panel" role="dialog" aria-modal="true" aria-labelledby="adminTitle">
+<div class="admin-modal" id="adminModal">
+  <div class="admin-panel">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-      <h2 id="adminTitle">لوحة تحكّم المعرض</h2>
+      <h2>لوحة تحكّم المعرض</h2>
       <button id="closeAdmin" class="action-danger">إغلاق</button>
     </div>
-
     <div style="border-top:1px solid rgba(255,255,255,0.1);padding-top:10px;">
-      <div class="row">
-        <select id="categorySelect" class="input"></select>
-        <input id="newCategoryName" class="input" placeholder="اسم مجلد جديد" />
-        <button id="createCategoryBtn" class="btn-admin">إنشاء مجلد</button>
-      </div>
-
-      <div class="row">
-        <input type="file" id="fileInput" multiple accept="image/*,video/*" />
-        <input id="fileTitle" class="input" placeholder="عنوان الملف" />
-        <button id="uploadBtn" class="btn-admin">رفع للمجلد</button>
-      </div>
-
+      <div class="row"><select id="categorySelect" class="input"></select><input id="newCategoryName" class="input" placeholder="مجلد جديد"><button id="createCategoryBtn" class="btn-admin">إنشاء</button></div>
+      <div class="row"><input type="file" id="fileInput" multiple accept="image/*,video/*"><input id="fileTitle" class="input" placeholder="العنوان"><button id="uploadBtn" class="btn-admin">رفع</button></div>
       <div id="adminContent" style="margin-top:15px;"></div>
-
-      <div style="margin-top:20px; border-top:1px solid rgba(255,255,255,0.1); padding-top:10px;">
-        <button id="exportBtn" class="btn-admin" style="background:#444; color:#fff;">تصدير النسخة الاحتياطية</button>
-        <button id="importBtn" class="btn-admin" style="background:#444; color:#fff;">استيراد نسخة</button>
-        <input type="file" id="importFile" accept=".json" style="display:none;" />
-        <button id="clearAllBtn" class="action-danger" style="float:left;">حذف كافة البيانات</button>
-      </div>
+      <button id="exportBtn" class="btn-admin">تصدير</button><button id="importBtn" class="btn-admin">استيراد</button><input type="file" id="importFile" style="display:none;"><button id="clearAllBtn" class="action-danger">حذف الكل</button>
     </div>
   </div>
 </div>
 
-<div class="lightbox" id="lightbox" aria-hidden="true">
+<div class="lightbox" id="lightbox">
   <button class="lightbox-close" id="lightboxClose">✖</button>
   <div id="lightboxContent"></div>
 </div>
@@ -424,183 +345,92 @@ border:1px solid #fff;
 <script>
 const STORAGE_KEY = "vc_gallery_data";
 const ADMIN_PASSWORD = "a.m.m2001";
-
 const galleryEl = document.getElementById("gallery");
 const adminBtn = document.getElementById("adminBtn");
 const adminModal = document.getElementById("adminModal");
 const closeAdmin = document.getElementById("closeAdmin");
 const fileInput = document.getElementById("fileInput");
 const uploadBtn = document.getElementById("uploadBtn");
-const fileTitle = document.getElementById("fileTitle");
 const categorySelect = document.getElementById("categorySelect");
 const createCategoryBtn = document.getElementById("createCategoryBtn");
 const newCategoryName = document.getElementById("newCategoryName");
 const adminContent = document.getElementById("adminContent");
-const exportBtn = document.getElementById("exportBtn");
-const importBtn = document.getElementById("importBtn");
-const importFile = document.getElementById("importFile");
-const clearAllBtn = document.getElementById("clearAllBtn");
 const lightbox = document.getElementById("lightbox");
 const lightboxContent = document.getElementById("lightboxContent");
-const lightboxClose = document.getElementById("lightboxClose");
 
 function uid() { return 'id-' + Math.random().toString(36).slice(2,10); }
-function nowISO(){ return new Date().toISOString(); }
-
-function loadData(){
-  try{
-    const raw = localStorage.getItem(STORAGE_KEY);
-    return raw ? JSON.parse(raw) : {categories:{}};
-  }catch(e){ return {categories:{}}; }
-}
-function saveData(data){
-  try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); }
-  catch(e){ alert("تنبيه: حجم الملفات كبير جداً على ذاكرة المتصفح!"); }
-}
+function loadData(){ try{ return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {categories:{}}; }catch(e){ return {categories:{}}; } }
+function saveData(data){ localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); }
 
 function renderGallery(){
-  const data = loadData();
-  galleryEl.innerHTML = "";
-  const cats = Object.keys(data.categories || {});
-  cats.forEach(cat => {
+  const data = loadData(); galleryEl.innerHTML = "";
+  Object.keys(data.categories).forEach(cat => {
     const section = document.createElement("section");
-    section.innerHTML = `<div class="cat-header"><div class="cat-title">${cat}</div></div>`;
+    section.innerHTML = `<div class="cat-header"><div>${cat}</div></div>`;
     const grid = document.createElement("div"); grid.className="media-grid";
-    (data.categories[cat].items || []).forEach(item => {
+    data.categories[cat].items.forEach(item => {
       const card = document.createElement("div"); card.className="media-card";
       const thumb = document.createElement(item.type === "image" ? "img" : "video");
-      thumb.className="media-thumb"; thumb.src = item.data;
-      thumb.onclick = () => openLightbox(item);
-      card.appendChild(thumb);
-      card.innerHTML += `<div class="media-info"><div>${item.title || 'بدون عنوان'}</div><div class="small">${new Date(item.date).toLocaleDateString('ar-EG')}</div></div>`;
-      card.querySelector('.media-thumb').onclick = () => openLightbox(item);
-      grid.appendChild(card);
+      thumb.className="media-thumb"; thumb.src = item.data; thumb.onclick = () => openLightbox(item);
+      card.appendChild(thumb); grid.appendChild(card);
     });
-    section.appendChild(grid);
-    galleryEl.appendChild(section);
+    section.appendChild(grid); galleryEl.appendChild(section);
   });
 }
 
 function openLightbox(item){
-  lightboxContent.innerHTML = item.type === "image" ? 
-    `<img class="lightbox-media" src="${item.data}">` : 
-    `<video class="lightbox-media" src="${item.data}" controls autoplay></video>`;
+  lightboxContent.innerHTML = item.type === "image" ? `<img class="lightbox-media" src="${item.data}">` : `<video class="lightbox-media" src="${item.data}" controls autoplay></video>`;
   lightbox.classList.add("show");
 }
-lightboxClose.onclick = () => lightbox.classList.remove("show");
+document.getElementById("lightboxClose").onclick = () => lightbox.classList.remove("show");
 
-adminBtn.onclick = () => {
-  if(prompt("كلمة المرور:") === ADMIN_PASSWORD) {
-    adminModal.classList.add("show");
-    populateCategorySelect();
-    renderAdminContent();
-  } else { alert("خطأ!"); }
-};
+adminBtn.onclick = () => { if(prompt("كلمة المرور:") === ADMIN_PASSWORD) { adminModal.classList.add("show"); populateCategorySelect(); renderAdminContent(); } };
 closeAdmin.onclick = () => adminModal.classList.remove("show");
 
 function populateCategorySelect(){
-  const data = loadData();
-  categorySelect.innerHTML = '<option value="">-- اختر مجلد --</option>';
-  Object.keys(data.categories).forEach(c => {
-    categorySelect.innerHTML += `<option value="${c}">${c}</option>`;
-  });
+  const data = loadData(); categorySelect.innerHTML = '<option value="">-- اختر مجلد --</option>';
+  Object.keys(data.categories).forEach(c => categorySelect.innerHTML += `<option value="${c}">${c}</option>`);
 }
 
 createCategoryBtn.onclick = () => {
-  const name = newCategoryName.value.trim();
-  if(!name) return;
-  const data = loadData();
-  data.categories[name] = { items: [] };
-  saveData(data);
-  newCategoryName.value = "";
-  populateCategorySelect();
-  renderAdminContent();
+  const name = newCategoryName.value.trim(); if(!name) return;
+  const data = loadData(); data.categories[name] = { items: [] }; saveData(data);
+  newCategoryName.value = ""; populateCategorySelect(); renderAdminContent();
 };
 
 uploadBtn.onclick = async () => {
-  const files = fileInput.files;
-  const cat = categorySelect.value || newCategoryName.value.trim();
+  const files = fileInput.files; const cat = categorySelect.value || newCategoryName.value.trim();
   if(!files.length || !cat) return;
-  const data = loadData();
-  if(!data.categories[cat]) data.categories[cat] = { items: [] };
+  const data = loadData(); if(!data.categories[cat]) data.categories[cat] = { items: [] };
   for(let f of files){
     const reader = new FileReader();
     reader.onload = (e) => {
-      data.categories[cat].items.unshift({
-        id: uid(), type: f.type.startsWith("video") ? "video" : "image",
-        title: fileTitle.value || f.name, data: e.target.result, date: nowISO()
-      });
-      saveData(data);
-      if(f === files[files.length-1]) { renderAdminContent(); renderGallery(); }
+      data.categories[cat].items.unshift({ id: uid(), type: f.type.startsWith("video") ? "video" : "image", data: e.target.result, date: new Date().toISOString() });
+      saveData(data); if(f === files[files.length-1]) { renderAdminContent(); renderGallery(); }
     };
     reader.readAsDataURL(f);
   }
 };
 
 function renderAdminContent(){
-  const data = loadData();
-  adminContent.innerHTML = "";
+  const data = loadData(); adminContent.innerHTML = "";
   Object.keys(data.categories).forEach(cat => {
-    const div = document.createElement("div");
-    div.innerHTML = `<div style="display:flex; justify-content:space-between; margin-top:10px;">
-      <strong>${cat}</strong>
-      <button class="action-danger" onclick="deleteCat('${cat}')">حذف المجلد</button>
-    </div>`;
-    adminContent.appendChild(div);
+    adminContent.innerHTML += `<div style="display:flex; justify-content:space-between; margin-top:10px;"><strong>${cat}</strong><button class="action-danger" onclick="deleteCat('${cat}')">حذف</button></div>`;
   });
 }
-
-window.deleteCat = (cat) => {
-  if(confirm("حذف؟")){
-    const data = loadData(); delete data.categories[cat];
-    saveData(data); populateCategorySelect(); renderAdminContent(); renderGallery();
-  }
-};
-
-// EXPORT/IMPORT
-exportBtn.onclick = () => {
-  const blob = new Blob([JSON.stringify(loadData())], {type:"application/json"});
-  const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = "backup.json"; a.click();
-};
-importBtn.onclick = () => importFile.click();
-importFile.onchange = async (e) => {
-  const text = await e.target.files[0].text();
-  saveData(JSON.parse(text));
-  renderGallery(); renderAdminContent();
-};
-clearAllBtn.onclick = () => { if(confirm("حذف الكل؟")){ localStorage.removeItem(STORAGE_KEY); location.reload(); }};
+window.deleteCat = (cat) => { if(confirm("حذف؟")){ const data = loadData(); delete data.categories[cat]; saveData(data); populateCategorySelect(); renderAdminContent(); renderGallery(); } };
 
 renderGallery();
-
-// Audio & Snow
-const player = document.getElementById('player');
-function togglePlay() { player.paused ? player.play() : player.pause(); }
-
+function togglePlay() { const p = document.getElementById('player'); p.paused ? p.play() : p.pause(); }
 (function() {
-  const c = document.getElementById('snow');
-  const ctx = c.getContext('2d');
-  let W, H, flakes = [];
+  const c = document.getElementById('snow'); const ctx = c.getContext('2d'); let W, H, flakes = [];
   function resize() { W = c.width = window.innerWidth; H = c.height = window.innerHeight; flakes = Array.from({length:W/20},()=>({x:Math.random()*W,y:Math.random()*H,r:Math.random()*2+1,s:Math.random()*1+0.5})); }
   function step() { ctx.clearRect(0,0,W,H); ctx.fillStyle='white'; flakes.forEach(f=>{f.y+=f.s; if(f.y>H)f.y=0; ctx.beginPath(); ctx.arc(f.x,f.y,f.r,0,Math.PI*2); ctx.fill();}); requestAnimationFrame(step); }
   window.onresize = resize; resize(); step();
 })();
-
-// Settings
 const wrap = document.querySelector(".wrap");
-const settingsBtn = document.getElementById("settingsBtn");
-const settingsMenu = document.getElementById("settingsMenu");
-settingsBtn.onclick = () => settingsMenu.classList.toggle("show");
-document.querySelectorAll(".color-option").forEach(opt => {
-  opt.onclick = () => {
-    const col = opt.dataset.color;
-    document.documentElement.style.setProperty("--accent", col === 'rgb' ? '#ffa500' : col);
-    settingsMenu.classList.remove("show");
-  }
-});
-document.getElementById("scaleInput").oninput = (e) => {
-  wrap.style.transform = `scale(${e.target.value/100})`;
-  document.getElementById("scaleValue").textContent = e.target.value + "%";
-};
+document.getElementById("settingsBtn").onclick = () => document.getElementById("settingsMenu").classList.toggle("show");
+document.getElementById("scaleInput").oninput = (e) => { wrap.style.transform = `scale(${e.target.value/100})`; document.getElementById("scaleValue").textContent = e.target.value + "%"; };
 </script>
 </body>
 </html>
